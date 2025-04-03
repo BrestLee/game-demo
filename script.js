@@ -10,6 +10,7 @@ class WhackAMole {
         this.modal = document.getElementById('gameOverModal');
         this.finalScoreDisplay = document.getElementById('finalScore');
         this.restartButton = document.getElementById('restartButton');
+        this.quitButton = document.getElementById('quitButton');
         this.buttonTimers = document.querySelectorAll('.button-timer');
         
         this.bindEvents();
@@ -18,6 +19,7 @@ class WhackAMole {
     bindEvents() {
         this.startButton.addEventListener('click', () => this.startGame());
         this.restartButton.addEventListener('click', () => this.startGame());
+        this.quitButton.addEventListener('click', () => this.quitGame());
         this.holes.forEach(hole => {
             hole.addEventListener('click', () => this.whack(hole));
         });
@@ -136,6 +138,16 @@ class WhackAMole {
         // 显示游戏结束模态框
         this.finalScoreDisplay.textContent = this.score;
         this.modal.classList.add('show');
+    }
+
+    quitGame() {
+        // 重置游戏状态
+        this.resetGame();
+        // 隐藏模态框
+        this.modal.classList.remove('show');
+        // 显示开始按钮
+        this.startButton.disabled = false;
+        this.startButton.querySelector('.button-text').textContent = '开始游戏';
     }
 }
 

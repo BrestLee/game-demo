@@ -286,9 +286,9 @@ body {
     font-size: 3rem;
     font-weight: bold;
     text-shadow: 
-        0 0 5px #FFD700,
-        0 0 10px #FFD700,
-        0 0 15px #FFA500;
+        0 0 1px #FFD700,
+        0 0 1px #FFD700,
+        0 0 1px #FFA500;
 }
 
 .modal-body {
@@ -322,7 +322,79 @@ body {
 }
 
 .modal-footer {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
     margin-top: 2rem;
+}
+
+.restart-button, .quit-button {
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 200px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.restart-button {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.quit-button {
+    background: linear-gradient(135deg, #f44336, #d32f2f);
+    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
+}
+
+.restart-button:hover, .quit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.restart-button:active, .quit-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.restart-button::before, .quit-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.restart-button:hover::before, .quit-button:hover::before {
+    left: 100%;
+}
+
+.restart-button:disabled, .quit-button:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.restart-button:disabled::before, .quit-button:disabled::before {
+    display: none;
 }
 
 @keyframes fadeIn {
@@ -421,5 +493,18 @@ body {
 
     .button-timer {
         font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .modal-footer {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .restart-button, .quit-button {
+        padding: 0.7rem 1.5rem;
+        font-size: 1rem;
+        max-width: 100%;
     }
 } 
