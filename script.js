@@ -12,6 +12,8 @@ class WhackAMole {
         this.restartButton = document.getElementById('restartButton');
         this.quitButton = document.getElementById('quitButton');
         this.buttonTimers = document.querySelectorAll('.button-timer');
+        this.difficultyButtons = document.querySelectorAll('.difficulty-btn');
+        this.currentDifficulty = 'easy';
         
         this.bindEvents();
     }
@@ -22,6 +24,16 @@ class WhackAMole {
         this.quitButton.addEventListener('click', () => this.quitGame());
         this.holes.forEach(hole => {
             hole.addEventListener('click', () => this.whack(hole));
+        });
+        this.difficultyButtons.forEach(btn => {
+            btn.addEventListener('click', () => this.setDifficulty(btn.dataset.difficulty));
+        });
+    }
+
+    setDifficulty(difficulty) {
+        this.currentDifficulty = difficulty;
+        this.difficultyButtons.forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.difficulty === difficulty);
         });
     }
 
@@ -73,8 +85,11 @@ class WhackAMole {
             hole.classList.remove('active');
         });
         
-        // 随机决定出现1-2个地鼠
-        const moleCount = Math.floor(Math.random() * 2) + 1;
+        // 根据难度决定出现的地鼠数量
+        const moleCount = this.currentDifficulty === 'easy' 
+            ? Math.floor(Math.random() * 2) + 1  // 1-2个
+            : Math.floor(Math.random() * 2) + 3; // 3-4个
+            
         const availableHoles = Array.from(this.holes);
         
         for (let i = 0; i < moleCount; i++) {

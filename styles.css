@@ -499,6 +499,16 @@ body {
     .button-timer {
         font-size: 0.8rem;
     }
+
+    .difficulty-selector {
+        gap: 0.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .difficulty-btn {
+        padding: 0.4rem 1.2rem;
+        font-size: 0.9rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -512,4 +522,38 @@ body {
         font-size: 1rem;
         max-width: 100%;
     }
+}
+
+.difficulty-selector {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.difficulty-btn {
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #666, #444);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.difficulty-btn.active {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+}
+
+.difficulty-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.difficulty-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 } 
