@@ -19,6 +19,9 @@ body {
 
 .game-container {
     background-color: white;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 500px;
 }
@@ -434,7 +437,7 @@ body {
 /* 移动端适配 */
 @media (max-width: 480px) {
     .game-container {
-        padding: 0.8rem;
+        padding: 1.5rem;
     }
 
     .game-header {
